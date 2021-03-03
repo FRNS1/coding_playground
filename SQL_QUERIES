@@ -1,0 +1,8 @@
+select pro.codprod, pro.descrprod, sum (ite.qtdneg) from tgfpro as pro
+inner join tgfite as ite on
+ite.codprod = pro.codprod
+inner join tgfcab as cab on
+cab.nunota = ite.nunota
+where (cab.dtneg >= '2021/01/03' and cab.dtneg <= '2021/01/07') and (cab.codtipoper = 1305 OR cab.codtipoper = 66 or cab.codtipoper = 24)
+group by pro.codprod, pro.descrprod, ite.codprod
+ORDER BY ITE.CODPROD;
